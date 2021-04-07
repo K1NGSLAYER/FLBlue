@@ -1,0 +1,13 @@
+USER
+    Create User
+    Create Player
+    Sign in
+    Sign Out
+    Update profile
+
+TOURNAMENT
+    Create Tournament
+    Edit Tournament
+    Add Stage
+    View Tournaments
+

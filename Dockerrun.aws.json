@@ -1,0 +1,26 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "ui",
+            "image": "kingfardthe1st/egala",
+            "hostname": "ui",
+            "essential": true,
+            "memory": 256,
+            "portMappings":[
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                } 
+            ]
+        },
+        {
+            "name": "server",
+            "image": "kingfardthe1st/egala-server",
+            "hostname": "api",
+            "memory": 256,
+            "essential": false
+        }
+    ],
+    "links": ["ui", "server"]
+}

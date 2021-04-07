@@ -1,0 +1,22 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t kingfardthe1st/egala-server .
+
+#Log in to Docker Hub
+# - echo "DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+after_success:
+  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+  - docker push kingfardthe1st/egala-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  bucket_name: elasticbeanstalk-us-east-1-612881658900
+  bucket_path: egala-app-dev
+  app: egala-app-dev
+  env: EgalaAppDev-env
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
